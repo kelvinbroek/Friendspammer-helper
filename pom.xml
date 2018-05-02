@@ -25,6 +25,13 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<extensions>
+			<extension>
+				<groupId>io.packagecloud.maven.wagon</groupId>
+				<artifactId>maven-packagecloud-wagon</artifactId>
+				<version>0.0.6</version>
+			</extension>
+		</extensions>
 	</build>
 	<dependencies>
 		<dependency>
@@ -50,4 +57,14 @@
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>
+	<distributionManagement>
+		<repository>
+			<id>packagecloud-kelvinbroek</id>
+			<url>packagecloud+https://packagecloud.io/kelvinbroek/Friendspammer</url>
+		</repository>
+		<snapshotRepository>
+			<id>packagecloud-kelvinbroek</id>
+			<url>packagecloud+https://packagecloud.io/kelvinbroek/Friendspammer</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>
