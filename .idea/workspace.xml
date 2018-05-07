@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="11e0c109-1094-46d1-a795-035a07e43bcf" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wercker.yml" beforeDir="false" afterPath="$PROJECT_DIR$/wercker.yml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -27,8 +26,8 @@
       <file leaf-file-name="wercker.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wercker.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="6" lean-forward="true" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+            <state relative-caret-position="357">
+              <caret line="21" column="44" lean-forward="true" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -146,8 +145,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -253,11 +252,12 @@
       <workItem from="1525266411413" duration="7262000" />
       <workItem from="1525341477290" duration="54000" />
       <workItem from="1525674578337" duration="660000" />
+      <workItem from="1525679373987" duration="2440000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7976000" />
+    <option name="totallyTimeSpent" value="10416000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -421,8 +421,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wercker.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="6" lean-forward="true" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+        <state relative-caret-position="357">
+          <caret line="21" column="44" lean-forward="true" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
         </state>
       </provider>
     </entry>
