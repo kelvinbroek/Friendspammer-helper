@@ -1,11 +1,15 @@
 package nl.hu.sie.bep.friendspammer;
 
+import Domain.MailDTO;
 import com.mongodb.*;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class MongoSaver {
 
@@ -20,7 +24,7 @@ public class MongoSaver {
 		
 		boolean success = true;
 		
-		try (MongoClient mongoClient = new MongoClient(new ServerAddress("YOUR HOST", 27939), credential, MongoClientOptions.builder().build()) ) {
+		try (MongoClient mongoClient = new MongoClient(new ServerAddress("MongoDB", 27939), credential, MongoClientOptions.builder().build()) ) {
 			
 			MongoDatabase db = mongoClient.getDatabase( database );
 			
@@ -41,10 +45,29 @@ public class MongoSaver {
 		return success;
  		
 	}
-	
+
+	public ArrayList<MailDTO> getHistory() {
+		ArrayList<MailDTO> result = new ArrayList<MailDTO>();
+
+		String userName = "shotair";
+		String password = "FriendSpamPass";
+		String database = "friendspammer";
+
+		MongoCredential credential = MongoCredential.createCredential(userName, database, password.toCharArray());
+		MongoClient mongoClient = new MongoClient(new ServerAddress("MongoDB", 27939), credential, MongoClientOptions.builder().build());
+		MongoDatabase db = mongoClient.getDatabase( database );
+		MongoCollection<Document> c = db.getCollection("email");
+		Iterator<Document> it = c.find().iterator();
+
+		while(it.hasNext()) {
+			Document email = it.next();
+			result.add(new MailDTO(	"" + email.get("to"),"" +  email.get("from"), "" + email.get("subject"), "" + email.get("text"), "" + email.get("asHtml")));
+		}
+		mongoClient.close();
+		return result;
+	}
 	
 	public static void main(String ...args) {
 		logger.info("test");
 	}
-
 }
