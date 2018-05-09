@@ -1,6 +1,6 @@
 package nl.hu.sie.bep.friendspammer;
 
-import Domain.MailDTO;
+import domain.MailDTO;
 import com.mongodb.*;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class MongoSaver {
 
@@ -46,8 +47,8 @@ public class MongoSaver {
  		
 	}
 
-	public ArrayList<MailDTO> getHistory() {
-		ArrayList<MailDTO> result = new ArrayList<MailDTO>();
+	public List<MailDTO> getHistory() {
+		ArrayList<MailDTO> result = new ArrayList<>();
 
 		String userName = "shotair";
 		String password = "FriendSpamPass";
