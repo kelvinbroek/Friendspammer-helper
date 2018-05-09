@@ -7,6 +7,7 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import persistence.MyMongoDatabase;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,20 +18,11 @@ public class MongoSaver {
 	static final Logger logger = LoggerFactory.getLogger(MongoSaver.class);
 
 	public static boolean saveEmail(String to, String from, String subject, String text, Boolean html) {
-		String userName = "shotair";
-		String password = "FriendSpamPass";
-		String database = "friendspammer";
-		
-		MongoCredential credential = MongoCredential.createCredential(userName, database, password.toCharArray());
-		
 		boolean success = true;
 		
-		try (MongoClient mongoClient = new MongoClient(new ServerAddress("MongoDB", 27939), credential, MongoClientOptions.builder().build()) ) {
-			
-			MongoDatabase db = mongoClient.getDatabase( database );
-			
+		try {
+			MongoDatabase db = MyMongoDatabase.getDatabase();
 			MongoCollection<Document> c = db.getCollection("email");
-			
 			Document  doc = new Document ("to", to)
 			        .append("from", from)
 			        .append("subject", subject)
@@ -44,19 +36,12 @@ public class MongoSaver {
 		}
 		
 		return success;
- 		
 	}
 
 	public List<MailDTO> getHistory() {
 		ArrayList<MailDTO> result = new ArrayList<>();
 
-		String userName = "shotair";
-		String password = "FriendSpamPass";
-		String database = "friendspammer";
-
-		MongoCredential credential = MongoCredential.createCredential(userName, database, password.toCharArray());
-		MongoClient mongoClient = new MongoClient(new ServerAddress("MongoDB", 27939), credential, MongoClientOptions.builder().build());
-		MongoDatabase db = mongoClient.getDatabase( database );
+		MongoDatabase db = MyMongoDatabase.getDatabase();
 		MongoCollection<Document> c = db.getCollection("email");
 		Iterator<Document> it = c.find().iterator();
 
@@ -64,7 +49,7 @@ public class MongoSaver {
 			Document email = it.next();
 			result.add(new MailDTO(	"" + email.get("to"),"" +  email.get("from"), "" + email.get("subject"), "" + email.get("text"), "" + email.get("asHtml")));
 		}
-		mongoClient.close();
+
 		return result;
 	}
 	
