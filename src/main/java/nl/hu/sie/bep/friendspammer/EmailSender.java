@@ -17,11 +17,6 @@ public class EmailSender {
 
 	static final Logger logger = LoggerFactory.getLogger(EmailSender.class);
 
-	private EmailSender(){
-
-	};
-
-
 	public static void sendEmail(String subject, String to, String messageBody, boolean asHtml) {
 
 		Properties props = new Properties();
