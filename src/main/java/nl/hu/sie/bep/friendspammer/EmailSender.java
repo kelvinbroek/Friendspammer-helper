@@ -17,6 +17,11 @@ public class EmailSender {
 
 	static final Logger logger = LoggerFactory.getLogger(EmailSender.class);
 
+	private EmailSender(){
+
+	};
+
+
 	public static void sendEmail(String subject, String to, String messageBody, boolean asHtml) {
 
 		Properties props = new Properties();
@@ -53,7 +58,7 @@ public class EmailSender {
 			MongoSaver.saveEmail(to, "spammer@spamer.com", subject, messageBody, asHtml);
 
 		} catch (MessagingException e) {
-			throw new RuntimeException(e.getCause());
+			throw new IllegalArgumentException(e.getCause());
 		}
 	}
 
@@ -95,8 +100,7 @@ public class EmailSender {
 			}
 
 		} catch (MessagingException e) {
-			throw new RuntimeException(e.getCause());
+			throw new IllegalArgumentException(e.getCause());
 		}
 	}
-	
 }
